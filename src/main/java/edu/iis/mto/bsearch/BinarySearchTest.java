@@ -26,4 +26,11 @@ public class BinarySearchTest {
         SearchResult sr = BinarySearch.search(0, seq);
         Assert.assertEquals(1,sr.getPosition());
     }
+
+    @Test
+    public void searchTestElementIsLastInSeq() {
+        int[] seq = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        SearchResult sr = BinarySearch.search(10, seq);
+        Assert.assertEquals(11,sr.getPosition());
+    }
 }
