@@ -19,4 +19,11 @@ public class BinarySearchTest {
         SearchResult sr = BinarySearch.search(4, seq);
         Assert.assertFalse(sr.isFound());
     }
+
+    @Test
+    public void searchTestElementIsFirstInSeq() {
+        int[] seq = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        SearchResult sr = BinarySearch.search(0, seq);
+        Assert.assertEquals(1,sr.getPosition());
+    }
 }
