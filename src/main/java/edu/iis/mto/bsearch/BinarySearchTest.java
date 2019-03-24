@@ -47,4 +47,24 @@ public class BinarySearchTest {
         SearchResult sr = BinarySearch.search(12, seq);
         Assert.assertFalse(sr.isFound());
     }
+
+    @Test
+    public void searchTestWhereSequenceIsNull() {
+        int[] seq = null;
+        try{
+        BinarySearch.search(5, seq);
+        }catch (NullPointerException e){
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void searchTestWhereSequenceIsEmpty() {
+        int[] seq = {};
+        try{
+            BinarySearch.search(5, seq);
+        }catch (NullPointerException e){
+            System.out.println(e);
+        }
+    }
 }
