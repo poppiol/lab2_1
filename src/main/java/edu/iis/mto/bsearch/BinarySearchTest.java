@@ -3,6 +3,7 @@ package edu.iis.mto.bsearch;
 
 import org.junit.Test;
 import org.junit.Assert;
+import static org.hamcrest.Matchers.is;
 
 public class BinarySearchTest {
 
@@ -10,14 +11,14 @@ public class BinarySearchTest {
     public void searchTestElementIsInSequenceWithOneElement() {
         int[] seq = {7};
         SearchResult sr = BinarySearch.search(7, seq);
-        Assert.assertTrue(sr.isFound());
+        Assert.assertThat(sr.isFound(), is(true));
     }
 
     @Test
     public void searchTestElementIsNotInSequenceWithOneElement() {
         int[] seq = {7};
         SearchResult sr = BinarySearch.search(4, seq);
-        Assert.assertFalse(sr.isFound());
+        Assert.assertThat(sr.isFound(), is(false));
     }
 
     @Test
@@ -51,9 +52,9 @@ public class BinarySearchTest {
     @Test
     public void searchTestWhereSequenceIsNull() {
         int[] seq = null;
-        try{
-        BinarySearch.search(5, seq);
-        }catch (NullPointerException e){
+        try {
+            BinarySearch.search(5, seq);
+        } catch (NullPointerException e) {
             System.out.println(e);
         }
     }
@@ -61,10 +62,17 @@ public class BinarySearchTest {
     @Test
     public void searchTestWhereSequenceIsEmpty() {
         int[] seq = {};
-        try{
+        try {
             BinarySearch.search(5, seq);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println(e);
         }
+    }
+
+    @Test
+    public void searchTestWhenElementsInSeqAreNegative() {
+        int[] seq = {-1, -2, -3};
+        SearchResult sr = BinarySearch.search(-2, seq);
+        Assert.assertThat(sr.isFound(), is(true));
     }
 }
