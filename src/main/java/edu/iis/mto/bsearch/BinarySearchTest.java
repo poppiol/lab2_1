@@ -75,4 +75,18 @@ public class BinarySearchTest {
         SearchResult sr = BinarySearch.search(-2, seq);
         Assert.assertThat(sr.isFound(), is(true));
     }
+
+    @Test
+    public void searchTestWhenElementsInSeqAreSortedInDescOrder() {
+        int[] seq = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        SearchResult sr = BinarySearch.search(7, seq);
+        Assert.assertThat(sr.isFound(), is(false));
+    }
+
+    @Test
+    public void searchTestWhenElementsInSeqAreNotSorted() {
+        int[] seq = {10, 1, 9, 2, 8, 3, 7, 4, 5};
+        SearchResult sr = BinarySearch.search(7, seq);
+        Assert.assertThat(sr.isFound(), is(false));
+    }
 }
