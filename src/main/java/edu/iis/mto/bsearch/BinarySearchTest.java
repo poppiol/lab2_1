@@ -3,6 +3,7 @@ package edu.iis.mto.bsearch;
 
 import org.junit.Test;
 import org.junit.Assert;
+
 import static org.hamcrest.Matchers.is;
 
 public class BinarySearchTest {
@@ -49,24 +50,17 @@ public class BinarySearchTest {
         Assert.assertFalse(sr.isFound());
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void searchTestWhereSequenceIsNull() {
         int[] seq = null;
-        try {
-            BinarySearch.search(5, seq);
-        } catch (NullPointerException e) {
-            System.out.println(e);
-        }
+        BinarySearch.search(5, seq);
     }
 
     @Test
     public void searchTestWhereSequenceIsEmpty() {
         int[] seq = {};
-        try {
-            BinarySearch.search(5, seq);
-        } catch (NullPointerException e) {
-            System.out.println(e);
-        }
+        SearchResult sr = BinarySearch.search(5, seq);
+        Assert.assertThat(sr.isFound(), is(false));
     }
 
     @Test
